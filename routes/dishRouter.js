@@ -171,7 +171,7 @@ dishRouter.route('/:dishId/comments/:commentId') //espec. o endpoint
    +'/comments/'+ req.params.commentId);
 })
 .put((req,res,next)=>{ //so pode atualizar o rating e o comentario
-   Dishes.findById(req.params.dishId)
+   Dishes.findByIdAndUpdate(req.params.dishId)
    .then((dish) => {
       if (dish != null && dish.comments.id(req.params.commentId) != null ) {
          if (req.body.rating) {
@@ -201,7 +201,7 @@ dishRouter.route('/:dishId/comments/:commentId') //espec. o endpoint
    .catch((err) => next(err));
 })
 .delete((req,res,next)=>{
-   Dishes.findById(req.params.dishId)
+   Promotions.findByIdAndRemove(req.params.dishId)
    .then((dish) => {
       if (dish != null && dish.comments.id(req.params.commentId) != null ){
       
