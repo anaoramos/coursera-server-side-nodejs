@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 require('mongoose-currency').loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 
-
 const commentSchemma = new Schema({
     rating: {
         type: Number,
@@ -15,9 +14,9 @@ const commentSchemma = new Schema({
         type: String,
         required: true
     },
-    author: {
-        type: String,
-        required: true
+    author: {//este autor so guarda referencias para o autor
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
   }, {
         timestamps: true //auto. update this values whenever we update the doc.
