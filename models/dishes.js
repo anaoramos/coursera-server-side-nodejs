@@ -10,7 +10,7 @@ const commentSchemma = new Schema({
         max: 5,
         required: true
     },
-    comment : {
+    comment: {
         type: String,
         required: true
     },
@@ -18,8 +18,8 @@ const commentSchemma = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
-  }, {
-        timestamps: true //auto. update this values whenever we update the doc.
+}, {
+    timestamps: true //auto. update this values whenever we update the doc.
 });
 
 
