@@ -8,7 +8,7 @@ var jwt = require('jsonwebtoken');
 var config = require('./config');
 const { ExpectationFailed } = require('http-errors');
 
-exports.local = passport.use(new LocalStrategy(User.authenticate())); //o passport tem esta funcao User.authenticate
+passport.use(new LocalStrategy(User.authenticate())); //o passport tem esta funcao User.authenticate
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -21,7 +21,7 @@ var opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = config.secretKey;
 
-ExpectationFailed.jwtPassport = passport.use(new JwtStrategy(opts,
+exports.jwtPassport = passport.use(new JwtStrategy(opts,
     (jwt_payload, done) => {
         console.log("JWT payload: ", jwt_payload);
         User.findOne({ _id: jwt_payload._id }, (err, user) => {
